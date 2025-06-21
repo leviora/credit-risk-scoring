@@ -1,7 +1,5 @@
 package com.paulina.credit_risk_scoring.rest.serviceImpl;
 
-import com.paulina.credit_risk_scoring.dto.ClientDTO;
-import com.paulina.credit_risk_scoring.mapper.ClientMapper;
 import com.paulina.credit_risk_scoring.rest.model.Client;
 import com.paulina.credit_risk_scoring.rest.repository.ClientRepository;
 import com.paulina.credit_risk_scoring.rest.service.ClientService;

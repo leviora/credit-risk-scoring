@@ -1,6 +1,5 @@
 package com.paulina.credit_risk_scoring.rest.service;
 
-import com.paulina.credit_risk_scoring.dto.ClientDTO;
 import com.paulina.credit_risk_scoring.rest.model.Client;
 
 import java.util.List;
