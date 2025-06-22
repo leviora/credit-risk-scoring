@@ -6,6 +6,7 @@ import com.paulina.credit_risk_scoring.mapper.ClientMapper;
 import com.paulina.credit_risk_scoring.representation.ClientModel;
 import com.paulina.credit_risk_scoring.rest.model.Client;
 import com.paulina.credit_risk_scoring.rest.service.ClientService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class ClientController {
 
 
     @PostMapping
-    public ResponseEntity<ClientModel> createClient(@RequestBody ClientDTO clientDTO) {
+    public ResponseEntity<ClientModel> createClient(@RequestBody @Valid ClientDTO clientDTO) {
         Client client = clientMapper.toEntity(clientDTO);
         Client savedClient = clientService.createClient(client);
         ClientModel responseModel = clientModelAssembler.toModel(savedClient);

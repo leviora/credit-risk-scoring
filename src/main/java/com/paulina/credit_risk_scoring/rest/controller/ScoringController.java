@@ -6,6 +6,7 @@ import com.paulina.credit_risk_scoring.mapper.ScoringMapper;
 import com.paulina.credit_risk_scoring.representation.ScoringModel;
 import com.paulina.credit_risk_scoring.rest.model.Scoring;
 import com.paulina.credit_risk_scoring.rest.service.ScoringService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class ScoringController {
     private final ScoringModelAssembler scoringModelAssembler;
 
     @PostMapping
-    public ResponseEntity<ScoringModel> createScoring(@RequestBody ScoringDTO scoringDTO) {
+    public ResponseEntity<ScoringModel> createScoring(@RequestBody @Valid ScoringDTO scoringDTO) {
         Scoring scoring = scoringMapper.toEntity(scoringDTO);
         Scoring savedScoring = scoringService.createScoring(scoring);
         ScoringModel responseModel = scoringModelAssembler.toModel(savedScoring);
