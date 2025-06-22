@@ -1,12 +1,10 @@
 package com.paulina.credit_risk_scoring.dto;
 
-import com.paulina.credit_risk_scoring.rest.enums.EmploymentStatus;
-import com.paulina.credit_risk_scoring.rest.enums.MaritalStatus;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -21,17 +19,25 @@ public class ClientDTO {
     @NotBlank(message = "Last name is mandatory")
     String lastName;
 
-    @NotNull(message = "Age is mandatory")
-    @Min(value = 18, message = "Age must be at least 18")
-    Integer age;
+    @NotNull(message = "Date of birth is mandatory")
+    @Past(message = "Date of birth must be in the past")
+    LocalDate dateOfBirth;
 
-    @NotNull(message = "Income is mandatory")
-    @Min(value = 0, message = "Income must be positive")
-    Double income;
+    @Email(message = "Email should be valid")
+    String email;
 
-    @NotNull(message = "Marital status is mandatory")
-    MaritalStatus maritalStatus;
+    @Pattern(regexp = "\\+?[0-9]{7,15}", message = "Phone number should be valid")
+    String phoneNumber;
 
-    @NotNull(message = "Employment status is mandatory")
-    EmploymentStatus employmentStatus;
+    @NotBlank(message = "Address is mandatory")
+    String address;
+
+    @NotBlank(message = "City is mandatory")
+    String city;
+
+    @NotBlank(message = "Postal code is mandatory")
+    String postalCode;
+
+    @NotBlank(message = "Country is mandatory")
+    String country;
 }

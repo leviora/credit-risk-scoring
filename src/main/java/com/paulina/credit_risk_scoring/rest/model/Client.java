@@ -1,10 +1,10 @@
 package com.paulina.credit_risk_scoring.rest.model;
 
-import com.paulina.credit_risk_scoring.rest.enums.EmploymentStatus;
-import com.paulina.credit_risk_scoring.rest.enums.MaritalStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -22,11 +22,20 @@ public class Client {
 
     String lastName;
 
-    Integer age;
+    @Column(unique = true)
+    String personalIdNumber;
 
-    Double income;
+    LocalDate dateOfBirth;
 
-    MaritalStatus maritalStatus;
+    String email;
 
-    EmploymentStatus employmentStatus;
+    String phoneNumber;
+
+    String address;
+
+    String city;
+
+    String postalCode;
+
+    String country;
 }
